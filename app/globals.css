@@ -1,26 +1,406 @@
+
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #06101f;
+  --foreground: #f4f8ff;
+  --blue: #3295ff;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  margin: 0;
+  min-height: 100%;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.landing-page {
+  min-height: 100vh;
+  min-height: 100svh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(ellipse at 50% 38%, rgba(22, 94, 174, .17), transparent 48%),
+    linear-gradient(145deg, #071426 0%, #06101f 55%, #09182c 100%);
+}
+
+.ambient {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  filter: blur(110px);
+  pointer-events: none;
+  opacity: .12;
+}
+
+.ambient-one {
+  background: #087cff;
+  top: 15%;
+  left: -220px;
+}
+
+.ambient-two {
+  background: #00a6ff;
+  bottom: 0;
+  right: -230px;
+}
+
+.navbar {
+  width: min(1160px, 90%);
+  margin: auto;
+  height: 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(125, 177, 231, .12);
+  position: relative;
+  z-index: 2;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.brand-icon {
+  width: 39px;
+  height: 39px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #55b5ff, #0865d9);
+  color: white;
+  box-shadow: 0 5px 25px rgba(28, 132, 255, .3);
+}
+
+.brand-blue {
+  color: #4daaff;
+}
+
+.status-pill {
+  border: 1px solid rgba(81, 160, 255, .25);
+  background: rgba(34, 113, 199, .09);
+  color: #a7d4ff;
+  border-radius: 30px;
+  padding: 10px 17px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: #43e6a2;
+  border-radius: 50%;
+  margin-right: 9px;
+  box-shadow: 0 0 12px #43e6a2;
+  animation: pulse 1.8s infinite;
+}
+
+.hero {
+  width: min(1050px, 90%);
+  margin: auto;
+  padding: 65px 0 35px;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  color: #77bfff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.eyebrow-line {
+  height: 1px;
+  width: 30px;
+  background: #368de5;
+  opacity: .6;
+}
+
+.hero h1 {
+  font-size: clamp(38px, 6.2vw, 76px);
+  line-height: 1.12;
+  letter-spacing: -3.5px;
+  font-weight: 850;
+  margin: 30px 0 18px;
+}
+
+.gradient-text {
+  background: linear-gradient(100deg, #b9e4ff 0%, #45a6ff 45%, #1673e7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-description {
+  max-width: 540px;
+  margin: auto;
+  color: #9aacc3;
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.launch-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #81bfff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2.2px;
+  margin-top: 38px;
+}
+
+.launch-star {
+  color: #45aaff;
+}
+
+.coming-soon {
+  font-size: clamp(31px, 6vw, 58px);
+  font-weight: 900;
+  letter-spacing: 7px;
+  margin: 15px 0 20px;
+  text-shadow: 0 0 35px rgba(49, 147, 255, .23);
+}
+
+.coming-soon span {
+  color: #399fff;
+}
+
+.hero-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin: auto;
+  width: 170px;
+}
+
+.hero-divider > span:first-child,
+.hero-divider > span:last-child {
+  width: 55px;
+  height: 1px;
+  background: #32618e;
+}
+
+.divider-center {
+  width: 7px;
+  height: 7px;
+  border: 1px solid #56aeff;
+  transform: rotate(45deg);
+}
+
+.tagline {
+  color: #a6b7cd;
+  font-size: 13px;
+  letter-spacing: .5px;
+  margin-top: 17px;
+}
+
+.tagline strong {
+  color: #65b6ff;
+}
+
+.truck-section {
+  position: relative;
+  width: min(680px, 100%);
+  margin: 10px auto 0;
+}
+
+.truck-art {
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 10px 35px rgba(0, 114, 255, .16));
+  animation: truckFloat 4s ease-in-out infinite;
+}
+
+.truck-glow {
+  position: absolute;
+  width: 65%;
+  height: 60%;
+  background: #087bff;
+  filter: blur(100px);
+  opacity: .15;
+  top: 20%;
+  left: 18%;
+}
+
+.road-line {
+  height: 1px;
+  width: 70%;
+  margin: -8px auto 0;
+  background: linear-gradient(90deg, transparent, #3189dc, transparent);
+  opacity: .55;
+}
+
+.road-label {
+  color: #57799e;
+  font-size: 8px;
+  letter-spacing: 3px;
+  margin-top: 18px;
+}
+
+.footer {
+  width: min(1160px, 90%);
+  margin: auto auto 0;
+  min-height: 65px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  border-top: 1px solid rgba(125, 177, 231, .12);
+  color: #71859f;
+  font-size: 10px;
+  letter-spacing: .5px;
+  position: relative;
+  z-index: 2;
+}
+
+.footer-domain {
+  color: #91bce8;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.pak-flag {
+  color: #43aaff;
+  margin-left: 4px;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 12px #43e6a2; }
+  50% { opacity: .45; box-shadow: 0 0 3px #43e6a2; }
+}
+
+@keyframes truckFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    height: 75px;
+  }
+
+  .brand {
+    font-size: 21px;
+  }
+
+  .brand-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .status-pill {
+    font-size: 7px;
+    padding: 8px 9px;
+    letter-spacing: .7px;
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    margin-right: 5px;
+  }
+
+  .hero {
+    padding-top: 65px;
+    padding-bottom: 35px;
+  }
+
+  .eyebrow {
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    gap: 7px;
+  }
+
+  .eyebrow-line {
+    width: 15px;
+  }
+
+  .hero h1 {
+    letter-spacing: -2px;
+    margin-top: 25px;
+  }
+
+  .hero-description {
+    font-size: 13px;
+    padding: 0 8px;
+  }
+
+  .launch-label {
+    font-size: 8px;
+    letter-spacing: 1.2px;
+    gap: 7px;
+  }
+
+  .coming-soon {
+    letter-spacing: 3px;
+  }
+
+  .truck-section {
+    margin-top: 20px;
+  }
+
+  .road-label {
+    font-size: 6px;
+    letter-spacing: 1.5px;
+  }
+
+  .footer {
+    min-height: 75px;
+    font-size: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    padding: 13px 0;
+  }
+
+  .footer-domain {
+    width: 100%;
+    order: -1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
 }
